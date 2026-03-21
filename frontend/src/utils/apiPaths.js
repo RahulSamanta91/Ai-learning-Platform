@@ -1,4 +1,5 @@
-export const BASE_URL = "http://localhost:8000";
+
+export const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 export const API_PATHS = {
   AUTH: {
@@ -18,7 +19,7 @@ export const API_PATHS = {
   AI: {
     GENERATE_FLASHCARDS: "/api/ai/generate-flashcards",
     GENERATE_QUIZ: "/api/ai/generate-quiz",
-    GENERATE_SUMMARY: "/api/ai/generate-summary",
+    GENERATE_SUMMARY: "/api/ai/generate-summary", 
     CHAT: "/api/ai/chat",
     EXPLAIN_CONCEPT: "/api/ai/explain-concept",
     GET_CHAT_HISTORY: (documentId) => `/api/ai/chat-history/${documentId}`,
