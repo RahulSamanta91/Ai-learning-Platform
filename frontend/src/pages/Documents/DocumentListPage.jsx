@@ -96,7 +96,7 @@ const DocumentListPage = () => {
   const renderContent = () => {
     if (loading) {
       return (
-        <div className="flex items-center justify-center min-h-[400px]">
+        <div className="flex items-center justify-center min-h-100">
           <Spinner />
         </div>
       );
@@ -104,7 +104,7 @@ const DocumentListPage = () => {
 
     if (documents.length === 0) {
       return (
-        <div className="flex items-center justify-center min-h-[400px]">
+        <div className="flex items-center justify-center min-h-100">
           <div className="text-center max-w-md">
             <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-linear-to-br from-slate-100 to-slate-200 shadow-lg shadow-slate-200/50 mb-6">
               <FileText
@@ -145,15 +145,15 @@ const DocumentListPage = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen px-4 sm:px-6 lg:px-8">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 bg-[redial-gradient(#e5e7eb_1px,transparent_1px)] bg-size-[16px_16px] opacity-30 pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex items-center justify-between mb-10">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10">
           <div>
-            <h1 className="text-2xl font-medium text-slate-900 tracking-tight mb-2">
+            <h1 className="text-xl sm:text-2xl font-medium text-slate-900 tracking-tight mb-2">
               My Documents
             </h1>
             <p className="text-slate-500 text-sm">
@@ -161,7 +161,12 @@ const DocumentListPage = () => {
             </p>
           </div>
           {documents.length > 0 && (
-            <Button onClick={() => setIsUploadModalOpen(true)} className="cursor-pointer">
+            <Button
+              onClick={() => setIsUploadModalOpen(true)}
+              className="w-full sm:w-auto flex items-center justify-center gap-2
+px-4 py-2 sm:px-5 sm:py-2.5
+text-sm sm:text-base cursor-pointer"
+            >
               <Plus className="w-4 h-4" strokeWidth={2.5} />
               Upload Document
             </Button>
@@ -172,7 +177,7 @@ const DocumentListPage = () => {
 
       {isUploadModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm">
-          <div className="relative w-full max-w-lg bg-white/95 backdrop-blur-xl border-slate-200/60 rounded-2xl shadow-2xl shadow-slate-900/20 p-6">
+          <div className="relative w-full max-w-lg bg-white/95 backdrop-blur-xl border-slate-200/60 rounded-2xl shadow-2xl shadow-slate-900/20 p-4 sm:p-6">
             {/* Close button */}
             <button
               onClick={() => setIsUploadModalOpen(false)}
@@ -203,7 +208,7 @@ const DocumentListPage = () => {
                   value={uploadTitle}
                   onChange={(e) => setUploadTitle(e.target.value)}
                   required
-                  className="w-full h-12 px-4 border-2 border-slate-200 rounded-xl bg-slate-50/50 text-slate-900 placeholder-slate-400 text-sm font-medium transition-all duration-200 focus:outline-none focus:border-emerald-500 focus:bg-white focus:shadow-lg focus:shadow-emerald-500/10"
+                  className="w-full h-11 sm:h-12 px-4 border-2 border-slate-200 rounded-xl bg-slate-50/50 text-slate-900 placeholder-slate-400 text-sm font-medium transition-all duration-200 focus:outline-none focus:border-emerald-500 focus:bg-white focus:shadow-lg focus:shadow-emerald-500/10"
                   placeholder="e.g., React Interview Prep"
                 />
               </div>
@@ -222,7 +227,7 @@ const DocumentListPage = () => {
                     accept=".pdf"
                   />
 
-                  <div className="flex flex-col items-center justify-center py-10 px-6">
+                  <div className="flex flex-col items-center justify-center py-6 sm:py-10 px-4 sm:px-6">
                     <div className="w-14 h-14 rounded-xl bg-linear-to-r from-emerald-100 to-teal-100 flex items-center justify-center mb-4">
                       <Upload
                         className="w-7 h-7 text-emerald-600"
@@ -294,10 +299,7 @@ const DocumentListPage = () => {
             {/* Modal Header */}
             <div className="mb-6">
               <div className="w-12 h-12 rounded-xl bg-linear-to-r from-red-100 to-red-200 flex items-center justify-center mb-4">
-                <Trash2
-                  className="w-6 h-6 text-red-600"
-                  strokeWidth={2}
-                />
+                <Trash2 className="w-6 h-6 text-red-600" strokeWidth={2} />
               </div>
               <h2 className="text-xl font-medium text-slate-900 tracking-tight">
                 Confirm Deletion

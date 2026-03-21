@@ -238,8 +238,10 @@ const FlashcardManager = ({ documentId }) => {
           >
             {generating ? (
               <>
-                <div className="w-4 h-4 border-2 border-white rounded-full animate-spin" />
-                Generating...
+                <div className="flex items-center justify-center gap-2 text-white">
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  <span>Generating...</span>
+                </div>
               </>
             ) : (
               <>
@@ -272,8 +274,10 @@ const FlashcardManager = ({ documentId }) => {
           >
             {generating ? (
               <>
-                <div className="w-4 h-4 border-white/30 border-t-white rounded-full animate-spin" />
-                Generating...
+                <div className="flex items-center justify-center gap-2 text-white">
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  <span>Generating...</span>
+                </div>
               </>
             ) : (
               <>

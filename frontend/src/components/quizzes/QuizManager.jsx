@@ -104,10 +104,14 @@ const QuizManager = ({ documentId }) => {
 
   return (
     <div className="bg-white border-neutral-200 rounded-lg p-6">
-      <div className="flex justify-end gap-2 mb-4">
+      <div className="flex flex-col sm:flex-row sm:justify-end gap-2 mb-4">
         <Button
           onClick={() => setIsGenerateModalOpen(true)}
-          className="cursor-pointer"
+          className="w-full sm:w-auto
+  flex items-center justify-center gap-2
+  px-4 py-2
+  text-sm sm:text-base
+  cursor-pointer"
         >
           <Plus size={16} />
           Generate Quiz
@@ -153,7 +157,14 @@ const QuizManager = ({ documentId }) => {
               disabled={generating}
               className="cursor-pointer"
             >
-              {generating ? "Generating..." : "Generate"}
+              {generating ? (
+                <span className="flex items-center gap-2">
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  Generating...
+                </span>
+              ) : (
+                "Generate"
+              )}
             </Button>
           </div>
         </form>
@@ -187,7 +198,14 @@ const QuizManager = ({ documentId }) => {
               disabled={deleting}
               className="px-5 h-11 bg-slate-100 bg-linear-to-r from-rose-500 to-red-500 hover:from-rose-600 hover:to-red-600 text-white font-semibold text-sm rounded-xl transition-all duration-200 shadow-lg shadow-rose-500/25 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 cursor-pointer"
             >
-              {deleting ? "Deleting..." : "Delete"}
+              {deleting ? (
+                <span className="flex items-center gap-2">
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  Deleting...
+                </span>
+              ) : (
+                "Delete"
+              )}
             </button>
           </div>
         </div>

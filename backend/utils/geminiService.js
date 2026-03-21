@@ -105,7 +105,6 @@ export const generateQuiz = async (text, numQuestions = 5) => {
 
     const generatedText = response.text;
 
-
     const questions = [];
     const questionBlocks = generatedText.split("___").filter((q) => q.trim());
 
@@ -124,7 +123,15 @@ export const generateQuiz = async (text, numQuestions = 5) => {
         } else if (trimmed.match(/^0\d:/)) {
           options.push(trimmed.substring(3).trim());
         } else if (trimmed.startsWith("C:")) {
-          correctAnswer = trimmed.substring(2).trim();
+          let rawAnswer = trimmed.substring(2).trim();
+
+          // 🔥 remove "01:", "02:" etc
+          if (/^0\d:/.test(rawAnswer)) {
+            rawAnswer = rawAnswer.substring(3).trim();
+          }
+
+          correctAnswer = rawAnswer;
+          //correctAnswer = trimmed.substring(2).trim();
         } else if (trimmed.startsWith("E:")) {
           explanation = trimmed.substring(2).trim();
         } else if (trimmed.startsWith("D:")) {

@@ -1,9 +1,11 @@
 import Flashcard from "../models/Flashcard.js";
 
+
 // @desc    Get all flashcards for a document
-// @route   GET /api/flashcards
+// @route   GET /api/flashcards/:documentId
 // @access  Private
-export const getAllFlashcardSets = async (req, res, next) => {
+
+export const getFlashcards = async (req, res, next) => {
   try {
     const flashcards = await Flashcard.find({
       userId: req.user._id,
@@ -22,11 +24,10 @@ export const getAllFlashcardSets = async (req, res, next) => {
   }
 };
 
-// @desc    Get all flashcards for a user
+// @desc    Get all flashcards for a document
 // @route   GET /api/flashcards
 // @access  Private
-
-export const getFlashcards = async (req, res, next) => {
+export const getAllFlashcardSets = async (req, res, next) => {
   try {
     const flashcardSets = await Flashcard.find({
       userId: req.user._id,
@@ -43,6 +44,7 @@ export const getFlashcards = async (req, res, next) => {
     next(error);
   }
 };
+
 
 // @desc    Review a flashcard
 // @route   POST /api/flashcards/:cardId/review
