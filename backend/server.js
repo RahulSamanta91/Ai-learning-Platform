@@ -49,7 +49,13 @@ app.use("/api/ai", aiRoutes);
 app.use("/api/quizzes", quizRoutes);
 app.use("/api/progress", progressRoutes);
 
-
+// ✅ Root route
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "🚀 SmartLearn API is running successfully!",
+  });
+});
 
 // 404 Handler
 app.use((req, res) => {
@@ -61,15 +67,6 @@ app.use((req, res) => {
 });
 
 app.use(errorHandler);
-
-
-// ✅ Root route 
-app.get("/", (req, res) => {
-  res.status(200).json({
-    success: true,
-    message: "🚀 SmartLearn API is running successfully!"
-  });
-});
 
 //Start server
 const PORT = process.env.PORT || 8000;
