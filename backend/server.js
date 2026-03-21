@@ -62,6 +62,15 @@ app.use((req, res) => {
 
 app.use(errorHandler);
 
+
+// ✅ Root route 
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "🚀 SmartLearn API is running successfully!"
+  });
+});
+
 //Start server
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
