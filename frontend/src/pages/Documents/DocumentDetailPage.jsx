@@ -19,7 +19,7 @@ const DocumentDetailPage = () => {
   const [activeTab, setActiveTab] = useState("Content");
 
   useEffect(() => {
-    const fetchDocuemntDetails = async () => {
+    const fetchDocuemntDetails = async () => { 
       try {
         const data = await documentService.getDocumentById(id);
         setDocument(data);
@@ -43,7 +43,9 @@ const DocumentDetailPage = () => {
       return filePath;
     }
 
+    //const baseUrl = process.env.REACT_APP_API_URL ||'http://localhost:8000';
     const baseUrl = import.meta.env.VITE_API_URL ||'http://localhost:8000';
+    
      return `${baseUrl}${filePath.startsWith("/") ? "" : "/"}${filePath}`;
   };
 

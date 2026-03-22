@@ -45,7 +45,7 @@ const ProfilePage = () => {
     }
     setPasswordLoading(true);
     try {
-      await authService.changePassword({ currentPassword, newPassword });
+      await authService.changePassword({ currentPassword, newPassword }); 
       toast.success("Password change successfully!");
       setCurrentPassword("");
       setNewPassword("");

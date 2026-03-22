@@ -131,7 +131,8 @@ export const generateQuiz = async (text, numQuestions = 5) => {
           }
 
           correctAnswer = rawAnswer;
-          //correctAnswer = trimmed.substring(2).trim();
+
+         // correctAnswer = trimmed.substring(2).trim();
         } else if (trimmed.startsWith("E:")) {
           explanation = trimmed.substring(2).trim();
         } else if (trimmed.startsWith("D:")) {
