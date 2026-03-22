@@ -34,20 +34,42 @@ const DocumentDetailPage = () => {
   }, [id]);
 
   // Helper function to get the full PDF URL
+  // const getPdfUrl = () => {
+  //   if (!document?.data?.filePath) return null;
+
+  //   const filePath = document.data.filePath;
+
+  //   if (filePath.startsWith("http://") || filePath.startsWith("https://")) {
+  //     return filePath;
+  //   }
+
+  //   //const baseUrl = process.env.REACT_APP_API_URL ||'http://localhost:8000';
+  //   const baseUrl = import.meta.env.VITE_API_URL ||'http://localhost:8000';
+
+  //    return `${baseUrl}${filePath.startsWith("/") ? "" : "/"}${filePath}`;
+  // };
+
   const getPdfUrl = () => {
-    if (!document?.data?.filePath) return null;
+  if (!document?.data?.filePath) return null;
 
-    const filePath = document.data.filePath;
+  let filePath = document.data.filePath;
 
-    if (filePath.startsWith("http://") || filePath.startsWith("https://")) {
-      return filePath;
-    }
+  const baseUrl =
+    import.meta.env.VITE_API_URL || "http://localhost:8000";
 
-    //const baseUrl = process.env.REACT_APP_API_URL ||'http://localhost:8000';
-    const baseUrl = import.meta.env.VITE_API_URL ||'http://localhost:8000';
-    
-     return `${baseUrl}${filePath.startsWith("/") ? "" : "/"}${filePath}`;
-  };
+  // 🔥 Fix localhost URLs
+  if (filePath.includes("localhost")) {
+    return filePath.replace("http://localhost:8000", baseUrl);
+  }
+
+  // If already correct URL
+  if (filePath.startsWith("http")) {
+    return filePath;
+  }
+
+  // If only path
+  return `${baseUrl}${filePath}`;
+};
 
     const renderContent = () => {
       if (loading) {
