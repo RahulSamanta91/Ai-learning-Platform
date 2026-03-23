@@ -123,16 +123,32 @@ export const generateQuiz = async (text, numQuestions = 5) => {
         } else if (trimmed.match(/^0\d:/)) {
           options.push(trimmed.substring(3).trim());
         } else if (trimmed.startsWith("C:")) {
+          // correctAnswer = trimmed.substring(2).trim();
+          
+
+          // let rawAnswer = trimmed.substring(2).trim();
+          // // 🔥 remove "01:", "02:" etc
+          // if (/^0\d:/.test(rawAnswer)) {
+          //   rawAnswer = rawAnswer.substring(3).trim();
+          // }
+          // correctAnswer = rawAnswer;
+
+          //---------------------------------------------------
+
           let rawAnswer = trimmed.substring(2).trim();
 
-          // 🔥 remove "01:", "02:" etc
+          // Case 1: "02: git init"
           if (/^0\d:/.test(rawAnswer)) {
             rawAnswer = rawAnswer.substring(3).trim();
           }
 
-          correctAnswer = rawAnswer;
+          // 🔥 Case 2: "03" or "2"
+          else if (/^\d+$/.test(rawAnswer)) {
+            const index = parseInt(rawAnswer, 10) - 1;
+            rawAnswer = options[index] || "";
+          }
 
-         // correctAnswer = trimmed.substring(2).trim();
+          correctAnswer = rawAnswer.trim();
         } else if (trimmed.startsWith("E:")) {
           explanation = trimmed.substring(2).trim();
         } else if (trimmed.startsWith("D:")) {

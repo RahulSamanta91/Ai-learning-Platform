@@ -55,14 +55,14 @@ const App = () => {
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/documents" element={<DocumentListPage />} />
           <Route path="/documents/:id" element={<DocumentsDetailpage />} />
-          <Route path="/flashcards" element={<FlashcardsListPage />} />
+          {/* <Route path="/flashcards" element={<FlashcardsListPage />} /> */}
           <Route
             path="/documents/:id/flashcards"
             element={<Flashcardpage />}
           />
           <Route path="/quizzes/:quizId" element={<QuizTakePage />} />
           <Route path="/quizzes/:quizId/results" element={<QuizResultPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
+          {/* <Route path="/profile" element={<ProfilePage />} /> */}
         </Route>
 
         <Route path="*" element={<NotFoundPage />} />
