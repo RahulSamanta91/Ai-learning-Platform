@@ -142,7 +142,7 @@ export const generateQuiz = async (text, numQuestions = 5) => {
             rawAnswer = rawAnswer.substring(3).trim();
           }
 
-          // 🔥 Case 2: "03" or "2"
+          // 🔥 Case 2: "03" or "2" 
           else if (/^\d+$/.test(rawAnswer)) {
             const index = parseInt(rawAnswer, 10) - 1;
             rawAnswer = options[index] || "";
