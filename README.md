@@ -245,10 +245,10 @@ This project demonstrates:
 
 ```bash
 # Clone repo
-git clone https://github.com/<your-username>/AI-Learning-Platform.git
+git clone https://github.com/<your-username>/Ai-learning-Platform.git
 
 # Go to project
-cd AI-Learning-Platform
+cd Ai-learning-Platform
 
 # Install frontend
 cd frontend
@@ -273,7 +273,7 @@ npm run dev
 
 ## 👨‍💻 Author
 
-**Rahul Patra**  
+**Rahul Samanta**  
 
 ### 📫 Contact
 
