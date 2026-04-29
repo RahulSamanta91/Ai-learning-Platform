@@ -277,8 +277,8 @@ npm run dev
 
 ### 📫 Contact
 
-- 🌐 GitHub: https://github.com/Rahul-65-Patra
-- 💼 LinkedIn: https://linkedin.com/in/rahulpatra1 
+- 🌐 GitHub:https://github.com/RahulSamanta91
+- 💼 LinkedIn: https://www.linkedin.com/in/samantarahul/
 
 ---
 
